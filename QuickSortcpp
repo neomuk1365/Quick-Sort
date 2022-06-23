@@ -1,12 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-void swap(int *a,int *b){
-	int temp=*a;
+template<class T>
+void swap(T *a,T *b){
+	T temp=*a;
 	*a=*b;*b=temp;
 }
- int partition(int *arr,int l,int r){
- 	int pivot=arr[r];
- 	int ptr=l-1;
+template<class T>
+T partition(T *arr,int l,int r){
+ 	T pivot=arr[r];
+        T ptr=l-1;
  	for(int i=l;i<=r-1;i++){
         if(arr[i]<pivot)
         {
@@ -18,7 +20,9 @@ void swap(int *a,int *b){
  	return ptr+1;
 	
  }
- void quicksort(int *arr,int low,int high){
+ template<class T>
+ 
+ void quicksort(T *arr,int low,int high){
  	if(low>high){
  		return;
  	}
