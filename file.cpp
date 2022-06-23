@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+void swap(int *a,int *b){
+	int temp=*a;
+	*a=*b;*b=temp;
+}
+ int partition(int *arr,int l,int r){
+ 	int pivot=arr[r];
+ 	int ptr=l-1;
+ 	for(int i=l;i<=r-1;i++){
+        if(arr[i]<pivot)
+        {
+        	ptr++;
+        	swap(&arr[ptr],&arr[i]);
+        }
+ 	}
+ 	swap(&arr[ptr+1],&arr[r]);
+ 	return ptr+1;
+	
+ }
+ void quicksort(int *arr,int low,int high){
+ 	if(low>high){
+ 		return;
+ 	}
+ 	if(low<high){
+ 		int p=partition(arr,low,high);
+ 		quicksort(arr,low,p-1);
+ 		quicksort(arr,p+1,high);
+ 	}
+ }
+
+int main(){
+	int arr[]={101,-9,0,12,-14,2,43};
+	int n=sizeof(arr)/sizeof(int);
+	// mergesort(arr,0,n-1);
+	cout <<partition(arr,0,n-1)<<endl;;
+	for(int i=0;i<n;i++){
+		cout <<arr[i]<<endl;
+	}
+	quicksort(arr,0,n-1);
+	for(int i=0;i<n;i++){
+		cout <<arr[i]<<endl;
+	}
+
+}
